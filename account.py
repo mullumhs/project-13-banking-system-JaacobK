@@ -37,15 +37,15 @@ class Account:
         else:
             raise ValueError("Not a valid int")
         
-    def deposit(self, balance, deposit_amount):
+    def deposit(self, deposit_amount):
         if deposit_amount > 0:
-            self._balance = balance + deposit_amount
+            self._balance = self._balance + deposit_amount
         else:
             raise ValueError("Not a valid deposit")
         
-    def withdraw(self, balance, withdraw_ammount):
-        if withdraw_ammount > 0 and balance - withdraw_ammount >= 0:
-            self._balance = balance - withdraw_ammount
+    def withdraw(self, withdraw_ammount):
+        if withdraw_ammount > 0 and self._balance - withdraw_ammount >= 0:
+            self._balance = self._balance - withdraw_ammount
         else:
             raise ValueError("Not a valid withdraw")
          
