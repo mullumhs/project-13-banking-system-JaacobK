@@ -6,10 +6,13 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 class Account:
     # 
-    def __init__(self, name, acc_num, balance):
+    def __init__(self, name, acc_num, balance=0):
         self.set_name(name)
         self.set_acc_num(acc_num)
         self.set_balance(balance)
+
+    def __str__(self):
+        return f"{self.get_name()} {self.get_acc_num()} {self.get_balance()}"
 
     # returns name
     def get_name(self):
@@ -39,8 +42,8 @@ class Account:
     
     # 
     def set_balance(self, balance):
-        if isinstance(balance, float, int) and balance >= 0:
-                self._acc_num = balance
+        if isinstance(balance, (float, int)) and balance >= 0:
+                self._balance = balance
         else:
             raise ValueError("Not a valid int")
     

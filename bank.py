@@ -14,6 +14,7 @@ class Bank:
     def account_exist(self, acc_num):
         for account in self._accounts:
             if account.get_acc_num() == acc_num:
+                print("yay")
                 return account
             else:
                 return None
@@ -21,7 +22,8 @@ class Bank:
     # usses the account exist function to add an account if it doesn't allready exists and dosn't if it allready exists
     def add_account(self, name, acc_num):
         if self.account_exist(acc_num) is not None:
-            raise ValueError("Account allready exists")
+            raise ValueError("Account already exists")
+            #print("bad")
         else:
             new_account = Account(name, acc_num)
             self._accounts.append(new_account)
@@ -35,13 +37,39 @@ class Bank:
             raise ValueError("Account not found")
         
     #
-    def deposit(self):
-        pass
+    def deposit(self, acc_num, amount):
+        account = self.account_exist(acc_num)
+        if account:
+            account = self.deposit(amount)
+        else:
+            raise ValueError("Account not found")
     
     # 
-    def withdraw(self):
-        pass
+    def withdraw(self, acc_num, amount):
+        account = self.account_exist(acc_num)
+        if account:
+            account = self.withdraw(amount)
+        else:
+            raise ValueError("Account not found")
         
-    def transfer():
-        pass
-    
+    def transfer(self, source_acc, dest_acc, amount):
+        source_account = self.account_exist(source_acc)
+        destination_account = self.account_exist(source_acc)
+        if source_account and destination_account:
+            source_account = self.withdraw(amount)
+            destination_account = self.deposit(amount)
+        else:
+            raise ValueError("Account not found")
+
+    def display(self):
+        for account in self._accounts:
+           print(account) 
+        
+
+me_bank = Bank()
+
+me_bank.add_account("joe", 123)
+me_bank.add_account("joe", 123)
+me_bank.add_account("appleman", 1223)
+me_bank.display()
+#me_bank.remove_account(1223)
