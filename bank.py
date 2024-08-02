@@ -22,8 +22,8 @@ class Bank:
     # usses the account exist function to add an account if it doesn't allready exists and dosn't if it allready exists
     def add_account(self, name, acc_num):
         if self.account_exist(acc_num) is not None:
-            raise ValueError("Account already exists")
-            #print("bad")
+            #raise ValueError("Account already exists")
+            print("bad")
         else:
             new_account = Account(name, acc_num)
             self._accounts.append(new_account)
@@ -72,4 +72,5 @@ me_bank.add_account("joe", 123)
 me_bank.add_account("joe", 123)
 me_bank.add_account("appleman", 1223)
 me_bank.display()
+me_bank.deposit(123, 100)
 #me_bank.remove_account(1223)
